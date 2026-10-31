@@ -190,7 +190,9 @@ El tercer nivel es la compilación automática en GitHub Actions. En cada push e
 | Mac con macOS 27, código fuente | 38 pruebas unitarias | 38 de 38 |
 | Mac con macOS 27, código fuente | Autoprueba | 33 de 33 |
 | Mac con macOS 27, ejecutable empaquetado con PyInstaller | Autoprueba, con ventana | 33 de 33 |
-| GitHub Actions: Windows, macOS y Ubuntu Linux | Pruebas unitarias, autoprueba del código y del ejecutable | Se corre en cada push; el reporte queda en la corrida |
+| GitHub Actions, Windows | 38 pruebas unitarias y autoprueba del código y del ejecutable | 38 de 38; 33 de 33 en las dos autopruebas |
+| GitHub Actions, macOS | 38 pruebas unitarias y autoprueba del código y del ejecutable | 38 de 38; 33 de 33 en las dos autopruebas |
+| GitHub Actions, Ubuntu Linux | 38 pruebas unitarias y autoprueba del código y del ejecutable | 38 de 38; 33 de 33 en las dos autopruebas |
 
 Durante el desarrollo salieron fallas reales. Las dejamos anotadas con su corrección, porque varias no se habrían visto sin las pruebas.
 
