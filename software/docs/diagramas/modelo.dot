@@ -1,0 +1,43 @@
+digraph M {
+  rankdir=LR; bgcolor="white"; pad=0.2; nodesep=0.5; ranksep=0.9;
+  node [shape=plain, fontname="Arial", fontsize=10];
+  edge [fontname="Arial", fontsize=9, color="#444444"];
+  clientes [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8" colspan="2"><b>clientes</b></td></tr>
+    <tr><td align="left"><u>cliente</u></td><td align="left">TEXT, llave primaria</td></tr>
+    <tr><td align="left">pais</td><td align="left">TEXT, obligatorio</td></tr>
+    <tr><td align="left">mercado</td><td align="left">TEXT: Reino Unido | Internacional</td></tr>
+    <tr><td align="left">recencia_dias</td><td align="left">INTEGER &gt;= 0</td></tr>
+    <tr><td align="left">frecuencia</td><td align="left">INTEGER &gt;= 1</td></tr>
+    <tr><td align="left">valor_total</td><td align="left">REAL &gt; 0 (libras)</td></tr>
+    <tr><td align="left">ticket_promedio</td><td align="left">REAL = valor / frecuencia</td></tr>
+    <tr><td align="left">unidades</td><td align="left">INTEGER &gt;= 0</td></tr>
+    <tr><td align="left">productos_distintos</td><td align="left">INTEGER &gt;= 0</td></tr>
+    <tr><td align="left">devoluciones</td><td align="left">INTEGER &gt;= 0</td></tr>
+    <tr><td align="left">estado</td><td align="left">TEXT: Activo (&lt;= 90 días) | Inactivo</td></tr>
+    <tr><td align="left">grupo</td><td align="left">INTEGER &gt;= 1 (modelo vigente)</td></tr></table>>];
+  originales [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>clientes_originales</b></td></tr>
+    <tr><td align="left">mismas columnas que clientes</td></tr>
+    <tr><td align="left">se llena una vez con el CSV del análisis</td></tr>
+    <tr><td align="left">no se modifica nunca</td></tr></table>>];
+  config [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8" colspan="2"><b>configuracion</b></td></tr>
+    <tr><td align="left"><u>clave</u></td><td align="left">TEXT, llave primaria</td></tr>
+    <tr><td align="left">valor</td><td align="left">TEXT</td></tr>
+    <tr><td align="left" colspan="2"><i>modelo</i>: JSON con k, media, escala, centroides, nombres, silueta</td></tr>
+    <tr><td align="left" colspan="2"><i>modelo_original</i>: el modelo del análisis</td></tr>
+    <tr><td align="left" colspan="2"><i>fuente</i>: origen de los datos</td></tr></table>>];
+  bitacora [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8" colspan="2"><b>bitacora</b></td></tr>
+    <tr><td align="left"><u>id</u></td><td align="left">INTEGER autoincremental</td></tr>
+    <tr><td align="left">fecha</td><td align="left">TEXT AAAA-MM-DD HH:MM:SS</td></tr>
+    <tr><td align="left">accion</td><td align="left">TEXT (Agregar, Editar, Recalcular...)</td></tr>
+    <tr><td align="left">detalle</td><td align="left">TEXT legible</td></tr>
+    <tr><td align="left">reversa</td><td align="left">TEXT JSON para deshacer</td></tr>
+    <tr><td align="left">deshecho</td><td align="left">INTEGER 0 | 1</td></tr></table>>];
+  originales -> clientes [label="Restaurar copia"];
+  config -> clientes [label="el modelo asigna grupo", style=dashed];
+  bitacora -> clientes [label="Deshacer aplica reversa", style=dashed];
+  bitacora -> config [label="guarda el modelo previo", style=dashed];
+}

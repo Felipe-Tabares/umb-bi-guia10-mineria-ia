@@ -1,0 +1,215 @@
+{
+  "filas_originales": 541909,
+  "pct_valor_sin_cliente": 14.7,
+  "lineas_limpias": 388345,
+  "atipicos": {
+    "recencia_dias": 140,
+    "frecuencia": 275,
+    "valor_total": 416
+  },
+  "indicadores": {
+    "ventas_totales": 8313467.69,
+    "facturas": 18277,
+    "ticket_promedio_factura": 454.86,
+    "tasa_recompra_pct": 65.3,
+    "clientes_activos_pct": 66.5,
+    "concentracion_top20_pct": 73.7,
+    "tasa_cancelacion_pct": 16.7
+  },
+  "mes_pico": "2011-11",
+  "top_productos": {
+    "WORLD WAR 2 GLIDERS ASSTD DESIGNS": 54079,
+    "POPCORN HOLDER": 48938,
+    "JUMBO BAG RED RETROSPOT": 45197,
+    "ASSORTED COLOUR BIRD ORNAMENT": 35234,
+    "WHITE HANGING HEART T-LIGHT HOLDER": 34239,
+    "PACK OF 72 RETROSPOT CAKE CASES": 33502,
+    "RABBIT NIGHT LIGHT": 27123,
+    "MINI PAINT SET VINTAGE": 25932,
+    "PACK OF 12 LONDON TISSUES": 25317,
+    "PACK OF 60 PINK PAISLEY CAKE CASES": 24158
+  },
+  "spearman_frecuencia_valor": 0.808,
+  "por_mercado": {
+    "Internacional": {
+      "clientes": 415,
+      "frecuencia_mediana": 2.0,
+      "frecuencia_media": 4.35,
+      "valor_mediano": 927.8
+    },
+    "Reino Unido": {
+      "clientes": 3909,
+      "frecuencia_mediana": 2.0,
+      "frecuencia_media": 4.21,
+      "valor_mediano": 636.51
+    }
+  },
+  "paises_frecuencia": {
+    "Germany": {
+      "clientes": 94,
+      "frecuencia_media": 4.71,
+      "valor_total": 203849.48
+    },
+    "France": {
+      "clientes": 87,
+      "frecuencia_media": 4.33,
+      "valor_total": 182143.53
+    },
+    "United Kingdom": {
+      "clientes": 3909,
+      "frecuencia_media": 4.21,
+      "valor_total": 6840377.61
+    },
+    "Belgium": {
+      "clientes": 24,
+      "frecuencia_media": 4.08,
+      "valor_total": 37027.61
+    },
+    "Finland": {
+      "clientes": 12,
+      "frecuencia_media": 3.33,
+      "valor_total": 18344.88
+    }
+  },
+  "evaluacion_k": [
+    {
+      "k": 2,
+      "silueta": 0.4337,
+      "davies_bouldin": 0.891,
+      "calinski_harabasz": 4354.8524,
+      "inercia": 6461.4426,
+      "tamanos": "[1642, 2682]"
+    },
+    {
+      "k": 3,
+      "silueta": 0.3438,
+      "davies_bouldin": 1.0309,
+      "calinski_harabasz": 3629.6278,
+      "inercia": 4840.3278,
+      "tamanos": "[682, 1682, 1960]"
+    },
+    {
+      "k": 4,
+      "silueta": 0.3387,
+      "davies_bouldin": 1.0119,
+      "calinski_harabasz": 3313.6438,
+      "inercia": 3929.5683,
+      "tamanos": "[685, 811, 1193, 1635]"
+    },
+    {
+      "k": 5,
+      "silueta": 0.3158,
+      "davies_bouldin": 0.9929,
+      "calinski_harabasz": 3166.6267,
+      "inercia": 3298.4712,
+      "tamanos": "[289, 817, 959, 1034, 1225]"
+    },
+    {
+      "k": 6,
+      "silueta": 0.3145,
+      "davies_bouldin": 1.0184,
+      "calinski_harabasz": 3066.9475,
+      "inercia": 2850.1545,
+      "tamanos": "[261, 560, 665, 823, 1005, 1010]"
+    },
+    {
+      "k": 7,
+      "silueta": 0.3079,
+      "davies_bouldin": 0.9797,
+      "calinski_harabasz": 2940.6498,
+      "inercia": 2549.9967,
+      "tamanos": "[221, 385, 616, 657, 683, 868, 894]"
+    },
+    {
+      "k": 8,
+      "silueta": 0.2953,
+      "davies_bouldin": 1.0003,
+      "calinski_harabasz": 2813.2172,
+      "inercia": 2331.9815,
+      "tamanos": "[162, 336, 342, 522, 637, 693, 803, 829]"
+    }
+  ],
+  "modelo": {
+    "k": 4,
+    "silueta": 0.339,
+    "davies_bouldin": 1.012,
+    "calinski_harabasz": 3313.6,
+    "estabilidad_ari_min": 0.975,
+    "estabilidad_ari_promedio": 0.987,
+    "arbol_exactitud_cv": 0.856,
+    "importancia": {
+      "recencia_dias": 0.44,
+      "valor_total": 0.353,
+      "frecuencia": 0.207,
+      "ticket_promedio": 0.0,
+      "productos_distintos": 0.0,
+      "devoluciones": 0.0
+    }
+  },
+  "perfil": [
+    {
+      "grupo": 1,
+      "nombre_grupo": "Frecuentes de alto valor",
+      "clientes": 685,
+      "recencia_mediana": 8.0,
+      "frecuencia_mediana": 10.0,
+      "valor_mediano": 3692.94,
+      "ticket_mediano": 365.05,
+      "productos_medianos": 117.0,
+      "pct_activos": 99.85,
+      "pct_reino_unido": 89.2,
+      "devoluciones_media": 2.93,
+      "silueta_media": 0.3,
+      "pct_clientes": 15.84,
+      "pct_valor": 64.42
+    },
+    {
+      "grupo": 2,
+      "nombre_grupo": "Regulares",
+      "clientes": 1193,
+      "recencia_mediana": 53.0,
+      "frecuencia_mediana": 4.0,
+      "valor_mediano": 1316.07,
+      "ticket_mediano": 354.25,
+      "productos_medianos": 59.0,
+      "pct_activos": 76.7,
+      "pct_reino_unido": 89.19,
+      "devoluciones_media": 0.87,
+      "silueta_media": 0.3,
+      "pct_clientes": 27.59,
+      "pct_valor": 23.65
+    },
+    {
+      "grupo": 3,
+      "nombre_grupo": "Recientes de bajo gasto",
+      "clientes": 811,
+      "recencia_mediana": 16.0,
+      "frecuencia_mediana": 2.0,
+      "valor_mediano": 467.51,
+      "ticket_mediano": 223.88,
+      "productos_medianos": 31.0,
+      "pct_activos": 100.0,
+      "pct_reino_unido": 91.74,
+      "devoluciones_media": 0.27,
+      "silueta_media": 0.25,
+      "pct_clientes": 18.76,
+      "pct_valor": 5.35
+    },
+    {
+      "grupo": 4,
+      "nombre_grupo": "Dormidos",
+      "clientes": 1635,
+      "recencia_mediana": 173.0,
+      "frecuencia_mediana": 1.0,
+      "valor_mediano": 289.35,
+      "ticket_mediano": 218.98,
+      "productos_medianos": 16.0,
+      "pct_activos": 28.5,
+      "pct_reino_unido": 91.13,
+      "devoluciones_media": 0.2,
+      "silueta_media": 0.42,
+      "pct_clientes": 37.81,
+      "pct_valor": 6.58
+    }
+  ]
+}

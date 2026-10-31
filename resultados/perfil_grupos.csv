@@ -1,0 +1,5 @@
+grupo,nombre_grupo,clientes,recencia_mediana,frecuencia_mediana,valor_mediano,ticket_mediano,productos_medianos,pct_activos,pct_reino_unido,devoluciones_media,silueta_media,pct_clientes,pct_valor
+1,Frecuentes de alto valor,685,8.0,10.0,3692.94,365.053,117.0,99.854,89.197,2.928,0.304,15.842,64.422
+2,Regulares,1193,53.0,4.0,1316.07,354.25,59.0,76.697,89.187,0.873,0.304,27.59,23.645
+3,Recientes de bajo gasto,811,16.0,2.0,467.51,223.88,31.0,100.0,91.739,0.275,0.254,18.756,5.348
+4,Dormidos,1635,173.0,1.0,289.35,218.98,16.0,28.502,91.131,0.204,0.421,37.812,6.585

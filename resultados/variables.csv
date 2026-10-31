@@ -1,0 +1,9 @@
+variable,tipo,descripcion,tipo_en_archivo,nulos,distintos
+InvoiceNo,Cualitativa nominal,Número de factura; si empieza por C es una cancelación,str,0,25900
+StockCode,Cualitativa nominal,Código del producto,str,0,4070
+Description,Cualitativa nominal,Nombre del producto,object,1454,4223
+Quantity,Cuantitativa discreta,Unidades de la línea,int64,0,722
+InvoiceDate,Cuantitativa (fecha),Fecha y hora de la factura,datetime64[us],0,23260
+UnitPrice,Cuantitativa continua,Precio por unidad en libras esterlinas,float64,0,1630
+CustomerID,Cualitativa nominal,Identificador del cliente,float64,135080,4372
+Country,Cualitativa nominal,País del cliente,str,0,38

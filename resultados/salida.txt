@@ -1,0 +1,156 @@
+
+==============================================================================
+FASE 1. Selección y comprensión de los datos
+==============================================================================
+Fuente: Online Retail, UCI Machine Learning Repository, https://doi.org/10.24432/C5BW33
+Filas: 541.909 | columnas: 8 | desde 2010-12-01 08:26:00 hasta 2011-12-09 12:50:00
+                              tipo tipo_en_archivo   nulos  distintos
+variable                                                             
+InvoiceNo      Cualitativa nominal             str       0      25900
+StockCode      Cualitativa nominal             str       0       4070
+Description    Cualitativa nominal          object    1454       4223
+Quantity     Cuantitativa discreta           int64       0        722
+InvoiceDate   Cuantitativa (fecha)  datetime64[us]       0      23260
+UnitPrice    Cuantitativa continua         float64       0       1630
+CustomerID     Cualitativa nominal         float64  135080       4372
+Country        Cualitativa nominal             str       0         38
+
+==============================================================================
+FASE 2. Preparación de los datos (bitácora)
+==============================================================================
+[Duplicados] 5.268 líneas idénticas repetidas. Eliminar: 541.909 -> 536.641 filas.
+[Cancelaciones] 9.251 líneas de facturas que empiezan por C. Sacar de las ventas y contarlas aparte por cliente: 536.641 -> 527.390 filas.
+[Cantidad no positiva] 1.336 líneas con cantidad 0 o negativa. Eliminar: 527.390 -> 526.054 filas.
+[Precio no positivo] 1.176 líneas con precio 0 o negativo. Eliminar: 526.054 -> 524.878 filas.
+[Códigos que no son producto] 2.340 líneas de envío, comisiones, descuentos, muestras y bonos. Eliminar: 524.878 -> 522.538 filas.
+[Descripciones inconsistentes] 217 códigos con más de una descripción. Unificar con la descripción más frecuente de cada código: 522.538 -> 522.538 filas.
+[Nombres de país] EIRE y RSA en vez de Ireland y South Africa. Renombrar: 522.538 -> 522.538 filas.
+[Cliente faltante] 131.388 líneas sin CustomerID (14,7 % del valor). Eliminar del análisis: 522.538 -> 391.150 filas.
+[Conversión de variables] CustomerID venía como decimal (17850.0). Pasar a texto entero y calcular Importe = Quantity x UnitPrice: 391.150 -> 391.150 filas.
+[Ventas anuladas después] 2.805 ventas con una cancelación idéntica posterior (423.760 libras). Eliminar la venta original: 391.150 -> 388.345 filas.
+[Cliente en varios países] 8 clientes con dos países. Dejar el país donde más compró: 388.345 -> 388.345 filas.
+
+Tabla de clientes (RFM) y valores atípicos
+Clientes: 4.324
+       recencia_dias  frecuencia  valor_total
+count         4324.0      4324.0       4324.0
+mean            92.4         4.2       1922.6
+std            100.3         7.6       8314.2
+min              0.0         1.0          2.9
+25%             17.0         1.0        301.2
+50%             50.0         2.0        656.4
+75%            143.0         5.0       1615.0
+max            373.0       203.0     278742.0
+Atípicos (regla 1,5 RIC): {'recencia_dias': 140, 'frecuencia': 275, 'valor_total': 416}
+Decisión: no se borran porque son clientes reales (mayoristas); para K-means se usa log(1 + x) y luego estandarización.
+[Valores atípicos] 275 en frecuencia y 416 en valor total. Conservar y transformar con log(1 + x): 4.324 -> 4.324 filas.
+[Estandarización] Recencia en días, frecuencia en facturas y valor en libras. log(1 + x) y luego media 0 y desviación 1: 4.324 -> 4.324 filas.
+
+==============================================================================
+FASE 3. Exploración y visualización
+==============================================================================
+
+Indicadores
+ventas_totales: 8313467.69
+facturas: 18277
+ticket_promedio_factura: 454.86
+tasa_recompra_pct: 65.3
+clientes_activos_pct: 66.5
+concentracion_top20_pct: 73.7
+tasa_cancelacion_pct: 16.7
+  figura: g1_ventas_por_mes.png
+  figura: g2_productos_mas_vendidos.png
+  figura: g3_frecuencia_vs_valor.png
+  figura: g4_recencia.png
+
+Patrones
+               clientes  frecuencia_mediana  frecuencia_media  valor_mediano
+mercado                                                                     
+Internacional       415                 2.0               4.4          927.8
+Reino Unido        3909                 2.0               4.2          636.5
+Países con 10 o más clientes, ordenados por frecuencia media:
+                clientes  frecuencia_media  valor_total
+pais                                                   
+Germany               94               4.7     203849.5
+France                87               4.3     182143.5
+United Kingdom      3909               4.2    6840377.6
+Belgium               24               4.1      37027.6
+Finland               12               3.3      18344.9
+Spain                 28               3.1      53361.6
+Norway                10               3.1      32319.3
+Portugal              19               2.6      26524.0
+
+==============================================================================
+FASE 4. K-means sobre recencia, frecuencia y valor
+==============================================================================
+   silueta  davies_bouldin  calinski_harabasz   inercia
+k                                                      
+2    0.434           0.891           4354.852  6461.443
+3    0.344           1.031           3629.628  4840.328
+4    0.339           1.012           3313.644  3929.568
+5    0.316           0.993           3166.627  3298.471
+6    0.314           1.018           3066.947  2850.155
+7    0.308           0.980           2940.650  2549.997
+8    0.295           1.000           2813.217  2331.982
+k = 2, clientes por grupo: [1642, 2682]
+k = 3, clientes por grupo: [682, 1682, 1960]
+k = 4, clientes por grupo: [685, 811, 1193, 1635]
+k = 5, clientes por grupo: [289, 817, 959, 1034, 1225]
+k = 6, clientes por grupo: [261, 560, 665, 823, 1005, 1010]
+k = 7, clientes por grupo: [221, 385, 616, 657, 683, 868, 894]
+k = 8, clientes por grupo: [162, 336, 342, 522, 637, 693, 803, 829]
+  figura: g5_codo_y_silueta.png
+
+==============================================================================
+FASE 5. Evaluación del modelo con k = 4
+==============================================================================
+Silueta: 0.339 | Davies-Bouldin: 1.012 | Calinski-Harabasz: 3314
+Estabilidad con 10 semillas (índice de Rand ajustado): mínimo 0.975, promedio 0.987
+grupo                                     1         2                       3        4
+nombre_grupo       Frecuentes de alto valor Regulares Recientes de bajo gasto Dormidos
+clientes                             685.00   1193.00                  811.00  1635.00
+recencia_mediana                       8.00     53.00                   16.00   173.00
+frecuencia_mediana                    10.00      4.00                    2.00     1.00
+valor_mediano                       3692.94   1316.07                  467.51   289.35
+ticket_mediano                       365.05    354.25                  223.88   218.98
+productos_medianos                   117.00     59.00                   31.00    16.00
+pct_activos                           99.85     76.70                  100.00    28.50
+pct_reino_unido                       89.20     89.19                   91.74    91.13
+devoluciones_media                     2.93      0.87                    0.27     0.20
+silueta_media                          0.30      0.30                    0.25     0.42
+pct_clientes                          15.84     27.59                   18.76    37.81
+pct_valor                             64.42     23.65                    5.35     6.58
+Árbol de 3 niveles que reproduce los grupos: exactitud en validación cruzada de 5 partes = 0.856
+recencia_dias          0.440
+valor_total            0.353
+frecuencia             0.207
+ticket_promedio        0.000
+productos_distintos    0.000
+devoluciones           0.000
+|--- valor_total <= 642
+|   |--- recencia_dias <= 38
+|   |   |--- recencia_dias <= 30
+|   |   |   |--- class: 3
+|   |   |--- recencia_dias >  30
+|   |   |   |--- class: 3
+|   |--- recencia_dias >  38
+|   |   |--- frecuencia <= 2
+|   |   |   |--- class: 4
+|   |   |--- frecuencia >  2
+|   |   |   |--- class: 2
+|--- valor_total >  642
+|   |--- frecuencia <= 6
+|   |   |--- recencia_dias <= 12
+|   |   |   |--- class: 3
+|   |   |--- recencia_dias >  12
+|   |   |   |--- class: 2
+|   |--- frecuencia >  6
+|   |   |--- recencia_dias <= 32
+|   |   |   |--- class: 1
+|   |   |--- recencia_dias >  32
+|   |   |   |--- class: 2
+
+  figura: g6_grupos_frecuencia_valor.png
+  figura: g7_peso_de_cada_grupo.png
+
+Guardado: datos/preparados/clientes.csv, resultados/ y resultados/reporte.html

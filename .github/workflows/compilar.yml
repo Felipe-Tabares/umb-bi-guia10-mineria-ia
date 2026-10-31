@@ -1,0 +1,98 @@
+# Compila el Segmentador de Clientes como programa portable en Windows, macOS y Linux y lo prueba en cada sistema.
+# Cada corrida en main publica los .zip en la versión "v1.0" del repositorio.
+name: Compilar y probar el software
+
+on:
+  push:
+    branches: [main]
+    paths: ["software/**", ".github/workflows/compilar.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compilar:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: windows-latest, sistema: windows, separador: ";" }
+          - { os: macos-latest, sistema: macos, separador: ":" }
+          - { os: ubuntu-latest, sistema: linux, separador: ":" }
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: software
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependencias
+        run: pip install -r requirements.txt "pyinstaller>=6.16"
+      - name: Pruebas unitarias
+        run: python -m unittest discover -s pruebas -v
+      - name: Autoprueba desde el código
+        if: runner.os != 'Linux'
+        run: python app.py --autoprueba salida-codigo
+      - name: Autoprueba desde el código (Linux con pantalla virtual)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a python app.py --autoprueba salida-codigo
+      - name: Empaquetar sin instalador
+        run: >-
+          pyinstaller --noconfirm --clean --onedir --windowed
+          --collect-submodules numpy._core
+          --add-data "segmentador/datos_iniciales/clientes.csv${{ matrix.separador }}segmentador/datos_iniciales"
+          --name SegmentadorClientes app.py
+
+      - name: Probar el ejecutable (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath "dist\SegmentadorClientes\SegmentadorClientes.exe" -ArgumentList "--autoprueba","$PWD\salida-ejecutable" -Wait -PassThru
+          Get-Content salida-ejecutable\reporte.txt
+          if ($p.ExitCode -ne 0) { exit 1 }
+          Compress-Archive -Path dist\SegmentadorClientes -DestinationPath SegmentadorClientes-windows.zip
+      - name: Probar el ejecutable (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          dist/SegmentadorClientes.app/Contents/MacOS/SegmentadorClientes --autoprueba "$PWD/salida-ejecutable"
+          cat salida-ejecutable/reporte.txt
+          ditto -c -k --keepParent dist/SegmentadorClientes.app SegmentadorClientes-macos.zip
+      - name: Probar el ejecutable (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          xvfb-run -a dist/SegmentadorClientes/SegmentadorClientes --autoprueba "$PWD/salida-ejecutable"
+          cat salida-ejecutable/reporte.txt
+          cd dist && zip -qr ../SegmentadorClientes-linux.zip SegmentadorClientes
+
+      # upload-artifact no usa working-directory: las rutas van desde la raíz del repositorio.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SegmentadorClientes-${{ matrix.sistema }}
+          path: software/SegmentadorClientes-${{ matrix.sistema }}.zip
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reporte-${{ matrix.sistema }}
+          path: |
+            software/salida-codigo/
+            software/salida-ejecutable/
+
+  publicar:
+    needs: compilar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: SegmentadorClientes-*
+          merge-multiple: true
+      - name: Publicar en la versión v1.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view v1.0 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create v1.0 -R "$GITHUB_REPOSITORY" --title "Segmentador de Clientes 1.0" \
+              --notes "Descomprima el .zip de su sistema y abra SegmentadorClientes. No requiere instalación."
+          gh release upload v1.0 SegmentadorClientes-*.zip -R "$GITHUB_REPOSITORY" --clobber

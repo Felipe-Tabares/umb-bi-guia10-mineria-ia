@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+segmentador_clientes.db
+salida-*/
+.escritura

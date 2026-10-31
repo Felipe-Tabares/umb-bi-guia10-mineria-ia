@@ -1,0 +1,14 @@
+paso,encontrado,accion,motivo,filas_antes,filas_despues
+Duplicados,5.268 líneas idénticas repetidas,Eliminar,La misma línea cargada dos veces infla ventas y frecuencia,541909,536641
+Cancelaciones,9.251 líneas de facturas que empiezan por C,Sacar de las ventas y contarlas aparte por cliente,"Son devoluciones, no compras",536641,527390
+Cantidad no positiva,1.336 líneas con cantidad 0 o negativa,Eliminar,Son ajustes de inventario sin factura de venta,527390,526054
+Precio no positivo,1.176 líneas con precio 0 o negativo,Eliminar,Una venta sin precio no aporta valor y distorsiona el ticket,526054,524878
+Códigos que no son producto,"2.340 líneas de envío, comisiones, descuentos, muestras y bonos",Eliminar,No son mercancía y la guía pregunta por productos,524878,522538
+Descripciones inconsistentes,217 códigos con más de una descripción,Unificar con la descripción más frecuente de cada código,"Si no, un producto cuenta como varios en el ranking",522538,522538
+Nombres de país,EIRE y RSA en vez de Ireland y South Africa,Renombrar,Que cada país tenga un solo nombre,522538,522538
+Cliente faltante,"131.388 líneas sin CustomerID (14,7 % del valor)",Eliminar del análisis,No se pueden asignar a ningún cliente y no hay forma honesta de imputarlas,522538,391150
+Conversión de variables,CustomerID venía como decimal (17850.0),Pasar a texto entero y calcular Importe = Quantity x UnitPrice,El identificador no es una cantidad,391150,391150
+Ventas anuladas después,2.805 ventas con una cancelación idéntica posterior (423.760 libras),Eliminar la venta original,El pedido no se hizo efectivo; los dos más grandes eran de 80.995 y 74.215 unidades,391150,388345
+Cliente en varios países,8 clientes con dos países,Dejar el país donde más compró,Un cliente debe tener un solo país,388345,388345
+Valores atípicos,275 en frecuencia y 416 en valor total,Conservar y transformar con log(1 + x),Son mayoristas reales; borrarlos quitaría el grupo que más vende,4324,4324
+Estandarización,"Recencia en días, frecuencia en facturas y valor en libras",log(1 + x) y luego media 0 y desviación 1,K-means usa distancias; sin esto el valor decide solo,4324,4324

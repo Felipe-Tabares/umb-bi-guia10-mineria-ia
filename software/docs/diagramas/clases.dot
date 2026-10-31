@@ -1,0 +1,44 @@
+digraph C {
+  rankdir=TB; bgcolor="white"; pad=0.2; nodesep=0.5; ranksep=0.6;
+  node [shape=plain, fontname="Arial", fontsize=10];
+  edge [fontname="Arial", fontsize=9, color="#444444"];
+  app [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Aplicacion</b> (ttk.Frame) · interfaz.py</td></tr>
+    <tr><td align="left">almacen, campos, buscar, filtro_grupo, filtro_estado, tipo, k, seleccion, orden</td></tr>
+    <tr><td align="left">refrescar() · llenar_tabla() · llenar_perfil() · redibujar()</td></tr>
+    <tr><td align="left">guardar() · eliminar() · recalcular() · deshacer() · restaurar()</td></tr>
+    <tr><td align="left">importar() · exportar_csv() · exportar_grafica() · ordenar() · ver_bitacora()</td></tr></table>>];
+  alm [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Almacen</b> · datos.py</td></tr>
+    <tr><td align="left">ruta, db (sqlite3), modelo</td></tr>
+    <tr><td align="left">clientes(texto, grupo, estado, orden) · cliente() · paises() · perfil()</td></tr>
+    <tr><td align="left">agregar() · actualizar() · eliminar() · recalcular(k)</td></tr>
+    <tr><td align="left">deshacer() · restaurar_originales() · bitacora() · diferencias_con_originales()</td></tr>
+    <tr><td align="left">importar_csv() · exportar_csv()</td></tr></table>>];
+  mod [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>Modelo</b> · modelo.py</td></tr>
+    <tr><td align="left">k, media, escala, centroides, nombres, silueta, davies_bouldin, origen</td></tr>
+    <tr><td align="left">estandarizar() · asignar() · etiqueta() · a_dict() · desde_dict()</td></tr>
+    <tr><td align="left"><i>funciones:</i> entrenar(clientes, k) · desde_grupos() · nombrar() · perfil() · validar_k()</td></tr></table>>];
+  val [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>validacion</b> (módulo)</td></tr>
+    <tr><td align="left">validar_cliente() · validar_codigo() · validar_pais()</td></tr>
+    <tr><td align="left">validar_entero() · validar_valor() · leer_decimal()</td></tr>
+    <tr><td align="left">mercado_de() · estado_de()</td></tr></table>>];
+  err [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>ErrorValidacion</b> (ValueError)</td></tr>
+    <tr><td align="left">mensaje listo para el usuario</td></tr></table>>];
+  graf [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>graficas</b> (módulo)</td></tr>
+    <tr><td align="left">TIPOS · COLORES · MARCADORES</td></tr>
+    <tr><td align="left">dibujar() · exportar() · ubicar()</td></tr>
+    <tr><td align="left">grupos() · dispersion() · participacion() · recencia() · paises()</td></tr></table>>];
+  auto [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="3" color="#333333">
+    <tr><td bgcolor="#E8E8E8"><b>autoprueba</b> (módulo)</td></tr>
+    <tr><td align="left">ejecutar(carpeta) → 33 pruebas + reporte.txt</td></tr></table>>];
+  app -> alm [label="usa"]; app -> graf [label="usa"];
+  alm -> val [label="valida con"]; alm -> mod [label="guarda y usa"];
+  val -> err [label="lanza"]; mod -> err [label="lanza"];
+  graf -> mod [label="lee nombres", style=dashed];
+  auto -> alm; auto -> graf; auto -> app [label="prueba la ventana", style=dashed];
+}

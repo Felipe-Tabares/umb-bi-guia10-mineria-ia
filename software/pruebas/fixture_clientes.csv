@@ -1,0 +1,121 @@
+cliente,pais,mercado,recencia_dias,frecuencia,valor_total,ticket_promedio,unidades,productos_distintos,devoluciones,estado,grupo,nombre_grupo
+P001,Germany,Internacional,19,29,8429.8,290.68,7453,101,0,Activo,1,Frecuentes de alto valor
+P002,United Kingdom,Reino Unido,18,11,3036.86,276.08,1474,60,2,Activo,1,Frecuentes de alto valor
+P003,United Kingdom,Reino Unido,11,12,5121.23,426.77,3864,41,0,Activo,1,Frecuentes de alto valor
+P004,Ireland,Internacional,11,25,6531.84,261.27,2900,70,1,Activo,1,Frecuentes de alto valor
+P005,Spain,Internacional,17,20,7355.25,367.76,7960,41,2,Activo,1,Frecuentes de alto valor
+P006,Spain,Internacional,5,19,7287.78,383.57,1919,14,0,Activo,1,Frecuentes de alto valor
+P007,United Kingdom,Reino Unido,12,19,6263.44,329.65,627,98,2,Activo,1,Frecuentes de alto valor
+P008,United Kingdom,Reino Unido,12,27,6478.11,239.93,6993,46,0,Activo,1,Frecuentes de alto valor
+P009,United Kingdom,Reino Unido,6,30,7844.22,261.47,720,106,0,Activo,1,Frecuentes de alto valor
+P010,United Kingdom,Reino Unido,3,25,8810.33,352.41,4000,80,0,Activo,1,Frecuentes de alto valor
+P011,Ireland,Internacional,18,21,6568.54,312.79,2541,113,2,Activo,1,Frecuentes de alto valor
+P012,United Kingdom,Reino Unido,16,24,3640.47,151.69,6312,30,1,Activo,1,Frecuentes de alto valor
+P013,Germany,Internacional,18,25,5528.85,221.15,5300,78,1,Activo,1,Frecuentes de alto valor
+P014,Germany,Internacional,9,12,5261.25,438.44,504,28,0,Activo,1,Frecuentes de alto valor
+P015,United Kingdom,Reino Unido,9,18,9851.24,547.29,5940,48,1,Activo,1,Frecuentes de alto valor
+P016,United Kingdom,Reino Unido,14,19,7735.15,407.11,4731,115,0,Activo,1,Frecuentes de alto valor
+P017,United Kingdom,Reino Unido,7,21,5817.49,277.02,3927,100,0,Activo,1,Frecuentes de alto valor
+P018,Ireland,Internacional,6,18,7702.36,427.91,6966,2,0,Activo,1,Frecuentes de alto valor
+P019,United Kingdom,Reino Unido,14,20,3921.31,196.07,7040,102,2,Activo,1,Frecuentes de alto valor
+P020,Germany,Internacional,19,20,6988.03,349.4,7580,34,0,Activo,1,Frecuentes de alto valor
+P021,France,Internacional,19,21,6866.29,326.97,1953,6,0,Activo,1,Frecuentes de alto valor
+P022,Ireland,Internacional,14,17,6987.86,411.05,6035,8,1,Activo,1,Frecuentes de alto valor
+P023,United Kingdom,Reino Unido,7,30,3266.4,108.88,5280,117,2,Activo,1,Frecuentes de alto valor
+P024,France,Internacional,12,21,5255.14,250.24,4137,54,2,Activo,1,Frecuentes de alto valor
+P025,France,Internacional,9,11,3212.45,292.04,319,109,0,Activo,1,Frecuentes de alto valor
+P026,United Kingdom,Reino Unido,14,18,5997.54,333.2,6966,10,1,Activo,1,Frecuentes de alto valor
+P027,Germany,Internacional,9,19,7132.04,375.37,6669,34,2,Activo,1,Frecuentes de alto valor
+P028,Ireland,Internacional,12,28,8356.73,298.45,4340,95,2,Activo,1,Frecuentes de alto valor
+P029,United Kingdom,Reino Unido,19,30,3036.25,101.21,2310,70,2,Activo,1,Frecuentes de alto valor
+P030,Germany,Internacional,5,25,5932.33,237.29,8200,102,2,Activo,1,Frecuentes de alto valor
+P031,Spain,Internacional,55,6,1772.33,295.39,150,115,1,Activo,2,Regulares
+P032,United Kingdom,Reino Unido,39,3,1118.37,372.79,885,110,1,Activo,2,Regulares
+P033,United Kingdom,Reino Unido,44,3,1942.94,647.65,264,104,1,Activo,2,Regulares
+P034,United Kingdom,Reino Unido,41,6,1947.24,324.54,894,27,1,Activo,2,Regulares
+P035,United Kingdom,Reino Unido,51,3,1473.28,491.09,1176,108,2,Activo,2,Regulares
+P036,United Kingdom,Reino Unido,53,6,1369.31,228.22,1812,114,2,Activo,2,Regulares
+P037,France,Internacional,67,4,975.59,243.9,704,30,1,Activo,2,Regulares
+P038,United Kingdom,Reino Unido,68,3,1176.1,392.03,651,95,2,Activo,2,Regulares
+P039,United Kingdom,Reino Unido,59,5,1592.58,318.52,1385,111,2,Activo,2,Regulares
+P040,Germany,Internacional,46,4,1123.2,280.8,584,21,0,Activo,2,Regulares
+P041,United Kingdom,Reino Unido,67,4,1824.19,456.05,400,72,0,Activo,2,Regulares
+P042,Ireland,Internacional,49,5,1554.15,310.83,1245,55,1,Activo,2,Regulares
+P043,United Kingdom,Reino Unido,69,4,1412.42,353.11,544,29,1,Activo,2,Regulares
+P044,United Kingdom,Reino Unido,37,4,968.05,242.01,1044,82,1,Activo,2,Regulares
+P045,Germany,Internacional,63,3,1702.99,567.66,930,101,0,Activo,2,Regulares
+P046,Germany,Internacional,62,6,1865.46,310.91,2202,107,1,Activo,2,Regulares
+P047,United Kingdom,Reino Unido,31,6,933.32,155.55,2202,53,0,Activo,2,Regulares
+P048,France,Internacional,40,4,1106.25,276.56,464,117,1,Activo,2,Regulares
+P049,United Kingdom,Reino Unido,54,3,1082.61,360.87,102,12,2,Activo,2,Regulares
+P050,United Kingdom,Reino Unido,42,3,1932.18,644.06,84,73,1,Activo,2,Regulares
+P051,United Kingdom,Reino Unido,56,5,1571.83,314.37,1640,29,0,Activo,2,Regulares
+P052,United Kingdom,Reino Unido,31,6,1781.83,296.97,1428,57,2,Activo,2,Regulares
+P053,United Kingdom,Reino Unido,32,6,1272.53,212.09,2064,102,0,Activo,2,Regulares
+P054,United Kingdom,Reino Unido,55,3,1777.2,592.4,186,37,0,Activo,2,Regulares
+P055,United Kingdom,Reino Unido,62,5,1042.05,208.41,1735,100,2,Activo,2,Regulares
+P056,United Kingdom,Reino Unido,38,6,1531.01,255.17,2130,47,1,Activo,2,Regulares
+P057,France,Internacional,33,4,1627.31,406.83,1004,7,1,Activo,2,Regulares
+P058,Germany,Internacional,62,6,1259.89,209.98,1998,11,2,Activo,2,Regulares
+P059,United Kingdom,Reino Unido,66,4,1077.66,269.42,1396,42,0,Activo,2,Regulares
+P060,Germany,Internacional,38,4,1520.08,380.02,1068,76,2,Activo,2,Regulares
+P061,United Kingdom,Reino Unido,9,2,382.6,191.3,328,120,1,Activo,3,Recientes de bajo gasto
+P062,United Kingdom,Reino Unido,13,2,253.49,126.75,116,23,1,Activo,3,Recientes de bajo gasto
+P063,United Kingdom,Reino Unido,12,2,348.69,174.34,670,80,1,Activo,3,Recientes de bajo gasto
+P064,France,Internacional,9,1,331.94,331.94,101,87,1,Activo,3,Recientes de bajo gasto
+P065,United Kingdom,Reino Unido,23,2,431.62,215.81,100,88,0,Activo,3,Recientes de bajo gasto
+P066,United Kingdom,Reino Unido,24,1,252.43,252.43,49,25,0,Activo,3,Recientes de bajo gasto
+P067,Germany,Internacional,4,2,562.56,281.28,138,88,0,Activo,3,Recientes de bajo gasto
+P068,France,Internacional,26,2,447.97,223.99,272,103,0,Activo,3,Recientes de bajo gasto
+P069,United Kingdom,Reino Unido,27,1,350.15,350.15,185,38,2,Activo,3,Recientes de bajo gasto
+P070,Germany,Internacional,23,1,510.59,510.59,56,30,2,Activo,3,Recientes de bajo gasto
+P071,United Kingdom,Reino Unido,12,2,225.68,112.84,552,28,1,Activo,3,Recientes de bajo gasto
+P072,Spain,Internacional,7,2,306.49,153.25,614,90,1,Activo,3,Recientes de bajo gasto
+P073,Germany,Internacional,28,1,250.3,250.3,304,107,0,Activo,3,Recientes de bajo gasto
+P074,United Kingdom,Reino Unido,20,1,488.39,488.39,323,49,2,Activo,3,Recientes de bajo gasto
+P075,France,Internacional,26,2,510.85,255.43,752,73,1,Activo,3,Recientes de bajo gasto
+P076,United Kingdom,Reino Unido,7,1,503.8,503.8,263,71,2,Activo,3,Recientes de bajo gasto
+P077,United Kingdom,Reino Unido,14,1,351.27,351.27,294,41,1,Activo,3,Recientes de bajo gasto
+P078,United Kingdom,Reino Unido,26,1,416.95,416.95,32,4,1,Activo,3,Recientes de bajo gasto
+P079,United Kingdom,Reino Unido,22,2,352.58,176.29,456,4,2,Activo,3,Recientes de bajo gasto
+P080,United Kingdom,Reino Unido,13,1,255.13,255.13,369,4,2,Activo,3,Recientes de bajo gasto
+P081,United Kingdom,Reino Unido,6,2,485.07,242.53,794,110,2,Activo,3,Recientes de bajo gasto
+P082,United Kingdom,Reino Unido,5,1,236.72,236.72,369,82,2,Activo,3,Recientes de bajo gasto
+P083,United Kingdom,Reino Unido,7,1,429.98,429.98,64,61,1,Activo,3,Recientes de bajo gasto
+P084,Spain,Internacional,7,2,565.77,282.88,610,91,0,Activo,3,Recientes de bajo gasto
+P085,United Kingdom,Reino Unido,3,2,389.36,194.68,624,19,0,Activo,3,Recientes de bajo gasto
+P086,United Kingdom,Reino Unido,11,1,487.9,487.9,139,30,1,Activo,3,Recientes de bajo gasto
+P087,Ireland,Internacional,30,2,555.48,277.74,82,21,2,Activo,3,Recientes de bajo gasto
+P088,United Kingdom,Reino Unido,13,2,290.87,145.44,226,62,0,Activo,3,Recientes de bajo gasto
+P089,Ireland,Internacional,16,1,249.25,249.25,32,6,0,Activo,3,Recientes de bajo gasto
+P090,Germany,Internacional,16,2,273.48,136.74,692,20,2,Activo,3,Recientes de bajo gasto
+P091,United Kingdom,Reino Unido,202,1,156.2,156.2,344,64,2,Inactivo,4,Dormidos
+P092,France,Internacional,276,1,242.31,242.31,216,120,1,Inactivo,4,Dormidos
+P093,France,Internacional,186,1,120.99,120.99,379,105,0,Inactivo,4,Dormidos
+P094,United Kingdom,Reino Unido,172,1,393.06,393.06,71,69,2,Inactivo,4,Dormidos
+P095,United Kingdom,Reino Unido,286,1,130.66,130.66,112,109,2,Inactivo,4,Dormidos
+P096,United Kingdom,Reino Unido,249,1,371.09,371.09,212,96,0,Inactivo,4,Dormidos
+P097,United Kingdom,Reino Unido,217,1,82.58,82.58,309,72,1,Inactivo,4,Dormidos
+P098,Ireland,Internacional,243,1,359.49,359.49,109,11,2,Inactivo,4,Dormidos
+P099,Spain,Internacional,348,1,300.63,300.63,320,92,0,Inactivo,4,Dormidos
+P100,France,Internacional,286,1,310.13,310.13,342,41,0,Inactivo,4,Dormidos
+P101,United Kingdom,Reino Unido,166,1,116.38,116.38,144,91,1,Inactivo,4,Dormidos
+P102,Spain,Internacional,269,1,172.01,172.01,369,102,2,Inactivo,4,Dormidos
+P103,United Kingdom,Reino Unido,209,1,91.13,91.13,245,62,0,Inactivo,4,Dormidos
+P104,United Kingdom,Reino Unido,265,1,333.25,333.25,386,13,0,Inactivo,4,Dormidos
+P105,Spain,Internacional,242,1,278.85,278.85,242,85,2,Inactivo,4,Dormidos
+P106,United Kingdom,Reino Unido,237,1,201.13,201.13,381,1,2,Inactivo,4,Dormidos
+P107,Spain,Internacional,294,1,287.68,287.68,109,37,1,Inactivo,4,Dormidos
+P108,United Kingdom,Reino Unido,260,1,321.52,321.52,99,13,0,Inactivo,4,Dormidos
+P109,France,Internacional,310,1,385.84,385.84,299,2,2,Inactivo,4,Dormidos
+P110,United Kingdom,Reino Unido,232,1,304.95,304.95,198,65,1,Inactivo,4,Dormidos
+P111,France,Internacional,342,1,251.35,251.35,374,11,1,Inactivo,4,Dormidos
+P112,United Kingdom,Reino Unido,337,1,73.47,73.47,232,110,1,Inactivo,4,Dormidos
+P113,Germany,Internacional,163,1,85.21,85.21,65,36,2,Inactivo,4,Dormidos
+P114,United Kingdom,Reino Unido,194,1,126.49,126.49,245,35,2,Inactivo,4,Dormidos
+P115,United Kingdom,Reino Unido,299,1,315.1,315.1,215,55,2,Inactivo,4,Dormidos
+P116,United Kingdom,Reino Unido,261,1,334.4,334.4,288,19,1,Inactivo,4,Dormidos
+P117,Germany,Internacional,157,1,290.55,290.55,333,99,1,Inactivo,4,Dormidos
+P118,United Kingdom,Reino Unido,231,1,249.83,249.83,263,35,1,Inactivo,4,Dormidos
+P119,France,Internacional,335,1,218.65,218.65,83,32,0,Inactivo,4,Dormidos
+P120,Spain,Internacional,251,1,174.93,174.93,307,19,2,Inactivo,4,Dormidos

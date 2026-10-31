@@ -1,0 +1,31 @@
+digraph G {
+  rankdir=TB; bgcolor="white"; pad=0.2; nodesep=0.45; ranksep=0.5;
+  node [shape=box, style="rounded", fontname="Arial", fontsize=11, color="#333333", penwidth=1.2];
+  edge [fontname="Arial", fontsize=9, color="#555555", arrowsize=0.7];
+  usuario [label="Usuario", shape=oval];
+  subgraph cluster_prog { label="SegmentadorClientes (carpeta portable, sin instalar)"; fontname="Arial"; fontsize=11; color="#999999"; style="dashed";
+    interfaz [label="Interfaz gráfica\ninterfaz.py (Tkinter)\ntabla · formulario · panel K-means"];
+    datos [label="Capa de datos\ndatos.py (Almacen)\nbitácora · deshacer · CSV"];
+    valida [label="Reglas de validación\nvalidacion.py"];
+    modelo [label="Modelo de segmentación\nmodelo.py (scikit-learn)\nlog1p · StandardScaler · KMeans"];
+    graf [label="Gráficas\ngraficas.py (matplotlib)\n5 tipos"];
+    base [label="segmentador_clientes.db\n(SQLite)", shape=cylinder];
+    inicial [label="datos_iniciales/clientes.csv\n4.324 clientes del análisis", shape=note];
+    auto [label="Autoprueba\nautoprueba.py\n33 pruebas"];
+  }
+  csv [label="Archivo CSV", shape=note];
+  salida [label="PNG / PDF", shape=note];
+  usuario -> interfaz [label="busca, agrega, edita,\nrecalcula grupos"];
+  interfaz -> datos [label="datos del formulario, k"];
+  datos -> valida [label="valida cada cliente"];
+  valida -> datos [label="cliente limpio o\nmotivo del rechazo"];
+  datos -> modelo [label="asignar grupo /\nentrenar K-means"];
+  datos -> base [label="guarda"];
+  base -> datos [label="lee"];
+  inicial -> datos [label="primera vez"];
+  datos -> interfaz [label="clientes, perfil de grupos\no mensaje de error"];
+  interfaz -> graf [label="redibuja al\ncambiar un dato"];
+  graf -> salida [label="exportar"];
+  csv -> datos [dir=both, label="importar / exportar"];
+  auto -> datos; auto -> graf; auto -> interfaz [style=dashed];
+}
