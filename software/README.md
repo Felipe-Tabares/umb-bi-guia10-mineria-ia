@@ -41,7 +41,7 @@ python app.py --autoprueba salida      # 33 pruebas sin intervención, deja repo
 python -m unittest discover -s pruebas # 38 pruebas unitarias
 ```
 
-Para empaquetar (en Windows el separador de `--add-data` es `;` en vez de `:`):
+Para empaquetar (el flujo de GitHub Actions usa `;` como separador de `--add-data` en Windows y `:` en macOS y Linux):
 
 ```
 pip install "pyinstaller>=6.16"

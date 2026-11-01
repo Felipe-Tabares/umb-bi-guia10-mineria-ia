@@ -6,11 +6,11 @@ El Segmentador de Clientes es un programa de escritorio que lleva a la práctica
 
 Arranca cargado con los 4.324 clientes de la tabla preparada en el análisis (`datos/preparados/clientes.csv`), que salen del conjunto Online Retail del UCI Machine Learning Repository (Chen, 2015, https://doi.org/10.24432/C5BW33). Lo hicimos así para que todo lo que muestre el programa se pueda rastrear hasta esos datos y hasta el análisis. La primera vez que abre, el programa vuelve a entrenar K-means con la misma receta y comprueba que le dan exactamente los mismos grupos del archivo. Esa comprobación queda escrita en la bitácora.
 
-Lo escribimos en Python con piezas que se pueden revisar por separado: la ventana en Tkinter, las reglas de validación, el modelo con scikit-learn, el almacenamiento en SQLite, las gráficas en matplotlib y una autoprueba que revisa todo en el equipo donde se va a usar. Cada archivo y cada función tiene su docstring, es decir, un comentario al inicio que explica qué hace y por qué está ahí, así que la documentación del código vive junto al código.
+Lo escribimos en Python con piezas que se pueden revisar por separado: la ventana en Tkinter, las reglas de validación, el modelo con scikit-learn, el almacenamiento en SQLite, las gráficas en matplotlib y una autoprueba que revisa todo en el equipo donde se va a usar. Cada archivo tiene su docstring, es decir, un comentario al inicio que explica qué hace y por qué está ahí, así que la documentación del código vive junto al código.
 
 ## Cómo se ejecuta sin instalar nada
 
-La guía pide un programa portable, sin instalación, que no sea web ni use HTML, CSS o JavaScript. Lo empaquetamos con PyInstaller en modo carpeta, que deja el ejecutable con todo lo que necesita adentro, incluido el propio Python, scikit-learn y matplotlib. Basta con descomprimir el .zip y abrir el programa. Preferimos el modo carpeta al de un solo archivo porque el de un solo archivo se descomprime en una carpeta temporal cada vez que abre, se demora más en arrancar y los antivirus lo marcan con más frecuencia.
+La guía pide un programa portable, sin instalación, que no sea web ni use HTML, CSS o JavaScript. Lo empaquetamos con PyInstaller en modo carpeta, que deja una carpeta con el ejecutable y, al lado, todo lo que necesita, incluido el propio Python, scikit-learn y matplotlib. Basta con descomprimir el .zip y abrir el programa. Preferimos el modo carpeta al de un solo archivo porque el de un solo archivo se descomprime en una carpeta temporal cada vez que abre, se demora más en arrancar y los antivirus lo marcan con más frecuencia.
 
 | Sistema | Archivo en Releases (v1.0) | Cómo se abre |
 |---|---|---|
@@ -133,7 +133,7 @@ Los dos algoritmos centrales quedaron también en pseudocódigo de PSeInt, que g
 | Histograma de recencia | Ver cuánto tiempo llevan los clientes sin comprar. La línea de 90 días separa activos (2.876, el 66,5 %) de inactivos (1.448, el 33,5 %) |
 | Top 10 países por valor | Ver de dónde viene el dinero. El Reino Unido concentra el 82,3 % del valor; la escala es lineal para no exagerar a los países pequeños |
 
-Las gráficas usan siempre todos los clientes. Los filtros de la tabla sirven para buscar, no para cambiar las gráficas, porque una gráfica de grupos dibujada solo con los inactivos daría una idea equivocada del modelo. Los colores de los grupos son siempre los mismos en las cinco gráficas, en la tabla de perfil y en los reportes: azul para el 1, naranja para el 2, verde para el 3 y morado para el 4.
+Las gráficas usan siempre todos los clientes. Los filtros de la tabla sirven para buscar, no para cambiar las gráficas, porque una gráfica de grupos dibujada solo con los inactivos daría una idea equivocada del modelo. En las tres gráficas que muestran grupos los colores son siempre los mismos: azul para el 1, naranja para el 2, verde para el 3 y morado para el 4.
 
 ## Manual de usuario
 
@@ -205,7 +205,7 @@ Durante el desarrollo salieron fallas reales. Las dejamos anotadas con su correc
 | Con la ventana pequeña el título de la gráfica se montaba sobre el subtítulo | Los márgenes se calculan en puntos y no en proporciones, y se recalculan al cambiar el tamaño de la ventana |
 | La gráfica de países en escala logarítmica hacía ver a los países pequeños casi tan grandes como el Reino Unido | Pasamos a escala lineal con el valor y el porcentaje escritos en cada barra |
 | En la gráfica de participación, la etiqueta de la barra más larga se salía por el borde derecho | Cada etiqueta quedó en dos líneas y el eje se ajustó; lo vimos al revisar las capturas |
-| Una prueba esperaba un ticket promedio de 250,13 y el programa daba 250,12 | Estaba mal la prueba: 1.000,50 entre 4 es 250,125, que el computador no puede guardar exacto en binario, y al redondear queda 250,12. Cambiamos el caso por uno exacto |
+| Una prueba esperaba un ticket promedio de 250,13 y el programa daba 250,12 | Estaba mal la prueba: 1.000,50 entre 4 da 250,125, justo en la mitad, y el round de Python en los empates redondea al número par, así que queda 250,12. Cambiamos el caso por uno sin empate |
 
 ## Cómo se compila
 
@@ -218,7 +218,7 @@ pyinstaller --noconfirm --clean --onedir --windowed --collect-submodules numpy._
   --name SegmentadorClientes app.py
 ```
 
-En Windows el separador de --add-data es punto y coma en vez de dos puntos. La opción --add-data mete dentro del ejecutable el CSV con los clientes del análisis, que es una copia de datos/preparados/clientes.csv, y --collect-submodules numpy._core evita un error que ya nos pasó en la Guía 9, cuando el ejecutable no abría por un módulo interno de numpy que PyInstaller no recogía solo. El flujo completo está en .github/workflows/compilar.yml, en la raíz del repositorio.
+En el flujo de GitHub Actions el separador de --add-data es punto y coma en Windows y dos puntos en macOS y Linux. La opción --add-data mete dentro del ejecutable el CSV con los clientes del análisis, que es una copia de datos/preparados/clientes.csv, y --collect-submodules numpy._core evita un error que ya nos pasó en la Guía 9, cuando el ejecutable no abría por un módulo interno de numpy que PyInstaller no recogía solo. El flujo completo está en .github/workflows/compilar.yml, en la raíz del repositorio.
 
 ## Límites conocidos
 
